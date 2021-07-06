@@ -1,9 +1,6 @@
 import csv
-# import pandas as pd
 import tkinter as tk
 from tkinter import filedialog
-# from pandas_datareader import data as pdr
-# import pandas_datareader as pdr
 import sqlite3
 import datetime
 from datetime import date
@@ -32,9 +29,6 @@ def create_ticker_list():
 
     with open(csv_file_name) as g:
         reader = csv.reader(g)
-    #    print('This is READER')
-    #    print(reader)
-    #    print(type(reader))
         for t in reader:
             if t != []:
                 cursor.execute('INSERT INTO Stocks VALUES (?)', t[0:1])
@@ -74,9 +68,6 @@ def update_to_current_date():
         try:
 
             data = si.get_data(symbol, start_date=working_date, end_date=date.today())
-    #        data = si.get_data(symbol, start_date="2021-06-25", end_date="2021-07-04")
-    #            pdr.get_data_enigma()
-    #        print(data)
             dict = {'ticker': 'Symbol',
                     'open': 'Open',
                     'high': 'High',
@@ -94,7 +85,8 @@ def update_to_current_date():
         except Exception as exc:
             print('Data grab failed for ' + symbol + "\n")
             print('The exception is\n'), exc
-#        quit()
+
+
 print('Menu:')
 print('1. Convert TXT list of tickers to Database')
 print('2. Update main database from Yahoo to current date')
