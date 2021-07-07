@@ -71,9 +71,12 @@ def get_averages():
                     ticker = str(ticker[1:ticker_l])
 
                     for i in range(avg_len, 0, -1):
-                        full_row = ''.join(str(ind_ticker_list[counter - i]))
-                        total_close = total_close + ind_ticker_list[counter - i + 1][1]
-                        total_volume = total_volume + ind_ticker_list[counter - i +1][2]
+                        try:
+                            full_row = ''.join(str(ind_ticker_list[counter - i]))
+                            total_close = total_close + ind_ticker_list[counter - i + 1][1]
+                            total_volume = total_volume + ind_ticker_list[counter - i +1][2]
+                        except:
+                            print('failed for ' + ticker)
                     average = total_volume/avg_len
                     close_avg = total_close/avg_len
                     total_volume = 0
