@@ -191,7 +191,7 @@ running = True
 while running:
     if choice == '1':
         create_ticker_list()
-        choice == ''
+        choice = ''
         break
     elif choice == '2':
         update_to_current_date()
